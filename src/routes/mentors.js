@@ -1,17 +1,17 @@
 
 const express = require('express')
-const koder = require('../usesCases/mentors')
+const mentor = require('../usesCases/mentors')
 const router = express.Router()
 
 router.get('/', async (req, res) => {
   try {
 
-    const mentor = await koder.getAll()
+    const mentors = await mentor.getAll()
     res.json({
       success: true,
       message: 'all mentor',
       data: {
-        mentor
+        mentors
       }
     })
   } catch (error) {
@@ -25,13 +25,13 @@ router.get('/', async (req, res) => {
 
 router.post('/',async(request, response) => {
   try {
-    const newkoder = await koder.create(request.body)
+    const newMentor = await mentor.create(request.body)
     response.status(200),
     response.json({
       success:true,
-      message:'koder create',
+      message:'mentor create',
       data:{
-        koder:newkoder
+        mentor:newMentor
       }
     })
   } catch (error) {
@@ -46,12 +46,12 @@ router.post('/',async(request, response) => {
 router.get('/:id',async (req, res) => {
   try {
     const id = req.params.id
-    const koderfound =  await koder.getById(id)
+    const koderfound =  await mentor.getById(id)
     res.json({
       success: true,
       message: 'mentor by Id',
       data: {
-        koder:koderfound
+        mentor:koderfound
       }
     })
   } catch (error) {
@@ -66,12 +66,12 @@ router.get('/:id',async (req, res) => {
 router.delete('/:id', async (req, res) => {
   try {
     const id = req.params.id
-    const koderDel = await koder.deletebyId(id)
+    const koderDel = await mentor.deletebyId(id)
     res.json({
       success: true,
-      message: 'koder Delete',
+      message: 'mentor Delete',
       data: {
-        koder:koderDel
+        mentor:koderDel
       }
     })
   } catch (error) {
@@ -87,13 +87,13 @@ router.patch('/:id', async (req, res) => {
   try {
     const id = req.params.id
     const info = req.body 
-    const upDatementor = await koder.updateById(id,info)
+    const upDatementor = await mentor.updateById(id,info)
     
     res.json({
       success: true,
       message: 'Changes Done',
       data: {
-        koder:upDatementor
+        mentor:upDatementor
       }
     })
   } catch (error) {

@@ -1,17 +1,17 @@
 
 const express = require('express')
-const koder = require('../usesCases/koder')
+const koder = require('../usesCases/mentors')
 const router = express.Router()
 
 router.get('/', async (req, res) => {
   try {
 
-    const koders = await koder.getAll()
+    const mentor = await koder.getAll()
     res.json({
       success: true,
-      message: 'all koders',
+      message: 'all mentor',
       data: {
-        koders
+        mentor
       }
     })
   } catch (error) {
@@ -49,7 +49,7 @@ router.get('/:id',async (req, res) => {
     const koderfound =  await koder.getById(id)
     res.json({
       success: true,
-      message: 'koders by Id',
+      message: 'mentor by Id',
       data: {
         koder:koderfound
       }
@@ -87,13 +87,13 @@ router.patch('/:id', async (req, res) => {
   try {
     const id = req.params.id
     const info = req.body 
-    const upDateKoders = await koder.updateById(id,info)
+    const upDatementor = await koder.updateById(id,info)
     
     res.json({
       success: true,
       message: 'Changes Done',
       data: {
-        koder:upDateKoders
+        koder:upDatementor
       }
     })
   } catch (error) {

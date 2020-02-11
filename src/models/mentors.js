@@ -1,7 +1,7 @@
 
 const mongoose = require('mongoose')
 
-const kodersSchema = new mongoose.Schema({
+const mentorsSchema = new mongoose.Schema({
   name:{
     type: String,
     minlength: 2,
@@ -27,4 +27,4 @@ const kodersSchema = new mongoose.Schema({
 
 
 
-module.exports = mongoose.model('Koders',kodersSchema)
+module.exports = mongoose.model('mentors',mentorsSchema)

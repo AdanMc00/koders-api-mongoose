@@ -1,6 +1,5 @@
 
 const Koder= require('../models/koder')
-
 function create ({name, gender, email, birthDate}) {
   const newKoder = new Koder({name, gender, email, birthDate})
   return newKoder.save()
@@ -20,7 +19,7 @@ function deletebyId(id){
 }
 
 function updateById(id, koderInfoToUpdate){
-  koderInfoToUpdate.findByIdAndUpdate(id,koderInfoToUpdate)
+  return Koder.findByIdAndUpdate(id,koderInfoToUpdate)
 }
 
 module.exports = {
